@@ -21,12 +21,18 @@ Files follow chezmoi prefix conventions — do not rename without understanding 
 - `dot_config/workmux/config.yaml` — global workmux layout
 - `dot_local/bin/executable_tmux-sessionizer` — fzf session switcher
 
+## Rules
+
+- Always update `dot_config/nvim/cheatsheet.md` when adding or changing keybindings
+- Always update `README.md` when adding a tool, changing the structure, or changing install steps
+- Every config change that affects the user workflow must be reflected in both files before committing
+
 ## Adding a new tool
 
 1. Add install commands in `run_once_install-packages.sh.tmpl` for each OS block
 2. Add config file under `dot_config/<tool>/`
 3. Add relevant keybindings in `dot_config/nvim/lua/config/keymaps.lua` if needed
-4. Update `dot_config/nvim/cheatsheet.md`
+4. Update `dot_config/nvim/cheatsheet.md` and `README.md`
 
 ## Adding a neovim plugin
 

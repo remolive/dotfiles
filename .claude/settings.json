@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE 'README\\.md|cheatsheet\\.md' || printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"REMINDER (CLAUDE.md): if this edit added a tool, changed install steps, or modified keybindings, update README.md and dot_config/nvim/cheatsheet.md in this same response.\"}}'"
+          }
+        ]
+      }
+    ]
+  }
+}

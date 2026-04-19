@@ -15,6 +15,7 @@ Personal dev environment config managed with [chezmoi](https://chezmoi.io). Buil
 | [lazydocker](https://github.com/jesseduffield/lazydocker) | Docker TUI, opens as a float in neovim |
 | [yazi](https://github.com/sxyazi/yazi) | File manager TUI |
 | [fzf](https://github.com/junegunn/fzf) | Fuzzy finder — used by tmux-sessionizer |
+| [fish](https://fishshell.com) | Default shell — autocompletion, syntax highlighting |
 
 ### Neovim extras (LazyVim)
 

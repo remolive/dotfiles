@@ -5,7 +5,7 @@ set -e
 if command -v pacman &>/dev/null; then
     # ── CachyOS / Arch ────────────────────────────────────────────────────────
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl glow
+    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl glow fish
 
     # yay (AUR helper)
     if ! command -v yay &>/dev/null; then
@@ -18,7 +18,7 @@ if command -v pacman &>/dev/null; then
 elif command -v apt-get &>/dev/null; then
     # ── Ubuntu ────────────────────────────────────────────────────────────────
     sudo apt-get update
-    sudo apt-get install -y tmux fzf git curl build-essential glow
+    sudo apt-get install -y tmux fzf git curl build-essential glow fish
 
     # Neovim (binary, apt version is too old)
     NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
@@ -45,6 +45,13 @@ else
 fi
 
 # ── Commun ────────────────────────────────────────────────────────────────────
+# fish comme shell par défaut
+if ! grep -q "$(which fish)" /etc/shells; then
+    which fish | sudo tee -a /etc/shells
+fi
+chsh -s "$(which fish)"
+
+
 # workmux
 curl -fsSL https://raw.githubusercontent.com/raine/workmux/main/scripts/install.sh | bash
 

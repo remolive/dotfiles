@@ -5,7 +5,7 @@ set -e
 if command -v pacman &>/dev/null; then
     # ── CachyOS / Arch ────────────────────────────────────────────────────────
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl
+    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl glow
 
     # yay (AUR helper)
     if ! command -v yay &>/dev/null; then
@@ -18,7 +18,7 @@ if command -v pacman &>/dev/null; then
 elif command -v apt-get &>/dev/null; then
     # ── Ubuntu ────────────────────────────────────────────────────────────────
     sudo apt-get update
-    sudo apt-get install -y tmux fzf git curl build-essential
+    sudo apt-get install -y tmux fzf git curl build-essential glow
 
     # Neovim (binary, apt version is too old)
     NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)

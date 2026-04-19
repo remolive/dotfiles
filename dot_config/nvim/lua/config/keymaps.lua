@@ -3,8 +3,6 @@ local map = vim.keymap.set
 -- Ctrl+S : sauvegarder (VSCode-like)
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
--- Cheatsheet (affiche le float avec tous les raccourcis perso)
-map("n", "<leader>ch", "<cmd>Cheatsheet<cr>", { desc = "Cheatsheet" })
 
 -- Lazydocker dans un float terminal
 map("n", "<leader>gd", function()

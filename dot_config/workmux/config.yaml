@@ -5,6 +5,7 @@ merge_strategy: rebase
 
 post_create:
   - workmux setup
+  - workmux sidebar
 
 panes:
   - command: <agent>

@@ -13,7 +13,7 @@
 
 ## Sessions | sessions
     <C-f>         Sessionizer (switch projet)
-    <leader>?     Ce cheatsheet
+    <leader>ch    Ce cheatsheet
 
 ## Tmux | tmux
     C-h/j/k/l       Naviguer entre panes (tmux + neovim seamless)

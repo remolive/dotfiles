@@ -7,4 +7,4 @@ panes:
   - command: <agent>
     focus: true
   - command: nvim .
-    split: vertical
+    split: horizontal

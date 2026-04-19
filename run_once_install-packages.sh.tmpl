@@ -47,10 +47,8 @@ fi
 # ── Commun ────────────────────────────────────────────────────────────────────
 export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
 
-# npm global sans sudo (prefix ~/.local)
-mkdir -p "$HOME/.local/lib/node_modules"
-npm config set prefix "$HOME/.local"
-npm install -g workmux
+# workmux
+curl -fsSL https://raw.githubusercontent.com/raine/workmux/main/scripts/install.sh | bash
 
 # lazydocker
 curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash

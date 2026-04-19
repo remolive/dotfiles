@@ -22,7 +22,7 @@
     <prefix>w     Overview toutes les fenetres
 
 ## Workmux | workmux
-    workmux add <feature>     Nouveau worktree + window tmux
+    workmux add <feature>     Nouveau worktree + window tmux (claude | nvim)
     workmux merge             Merge + cleanup
     workmux list              Lister les worktrees actifs
 

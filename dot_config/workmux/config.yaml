@@ -7,8 +7,4 @@ panes:
   - command: <agent>
     focus: true
   - command: nvim .
-    split: horizontal
-  - command: lazygit
-    split: horizontal
-  - command: lazydocker
-    split: horizontal
+    split: vertical

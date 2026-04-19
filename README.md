@@ -50,6 +50,8 @@ dot_local/bin/
 
 ### Key bindings
 
+Keybindings are inspired by VSCode conventions where possible (`Ctrl+s`, `Ctrl+p`, buffer navigation...).
+
 | Shortcut | Action |
 |---|---|
 | `Ctrl+f` | Fuzzy switch between tmux sessions/projects |

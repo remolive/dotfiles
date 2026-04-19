@@ -43,6 +43,7 @@ rm -rf /tmp/yazi.tar.gz /tmp/yazi-x86_64-unknown-linux-gnu
 
 # ── Commun Linux ──────────────────────────────────────────────────────────────
 # npm global sans sudo (prefix ~/.local)
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
 mkdir -p "$HOME/.local/lib/node_modules"
 npm config set prefix "$HOME/.local"
 npm install -g workmux

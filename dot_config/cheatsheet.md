@@ -38,7 +38,7 @@
     workmux close <name>    Fermer la window (garde le worktree)
     workmux resurrect       Restaurer les windows après un crash tmux
     workmux dashboard       TUI dashboard de tous les agents actifs
-    workmux sidebar         Toggle panneau live de statut dans tmux
+    workmux sidebar         Toggle panneau live de statut dans tmux  (<prefix>S)
     workmux list            Lister tous les worktrees
     workmux status          Statut des agents par worktree
     workmux send <msg>      Envoyer un prompt à l'agent en cours

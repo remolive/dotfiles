@@ -1,0 +1,14 @@
+# Config globale workmux — surchargeable par .workmux.yaml dans chaque projet
+main_branch: main
+agent: claude
+merge_strategy: rebase
+
+panes:
+  - command: <agent>
+    focus: true
+  - command: nvim .
+    split: horizontal
+  - command: lazygit
+    split: horizontal
+  - command: lazydocker
+    split: horizontal

@@ -5,7 +5,7 @@ set -e
 if command -v pacman &>/dev/null; then
     # ── CachyOS / Arch ────────────────────────────────────────────────────────
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl nodejs npm
+    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl
 
     # yay (AUR helper)
     if ! command -v yay &>/dev/null; then
@@ -18,7 +18,7 @@ if command -v pacman &>/dev/null; then
 elif command -v apt-get &>/dev/null; then
     # ── Ubuntu ────────────────────────────────────────────────────────────────
     sudo apt-get update
-    sudo apt-get install -y tmux fzf git curl nodejs npm build-essential
+    sudo apt-get install -y tmux fzf git curl build-essential
 
     # Neovim (binary, apt version is too old)
     NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
@@ -45,8 +45,6 @@ else
 fi
 
 # ── Commun ────────────────────────────────────────────────────────────────────
-export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
-
 # workmux
 curl -fsSL https://raw.githubusercontent.com/raine/workmux/main/scripts/install.sh | bash
 

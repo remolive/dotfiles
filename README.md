@@ -73,7 +73,6 @@ Keybindings are inspired by VSCode conventions where possible (`Ctrl+s`, `Ctrl+p
 - `curl`
 - `bash`
 
-> Node.js and npm are installed automatically by the install script.
 
 ---
 

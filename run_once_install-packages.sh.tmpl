@@ -1,57 +1,59 @@
 #!/bin/bash
 set -e
 
-{{ if eq .chezmoi.os "linux" -}}
-{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") (eq .chezmoi.osRelease.idLike "arch") -}}
-# ── CachyOS / Arch ────────────────────────────────────────────────────────────
-sudo pacman -Syu --noconfirm
-sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl nodejs npm
+# ── Détection OS via package manager (plus fiable que les templates chezmoi) ──
+if command -v pacman &>/dev/null; then
+    # ── CachyOS / Arch ────────────────────────────────────────────────────────
+    sudo pacman -Syu --noconfirm
+    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl nodejs npm
 
-# yay (AUR helper)
-if ! command -v yay &>/dev/null; then
-    sudo pacman -S --noconfirm base-devel
-    git clone https://aur.archlinux.org/yay.git /tmp/yay-install
-    (cd /tmp/yay-install && makepkg -si --noconfirm)
-    rm -rf /tmp/yay-install
+    # yay (AUR helper)
+    if ! command -v yay &>/dev/null; then
+        sudo pacman -S --noconfirm base-devel
+        git clone https://aur.archlinux.org/yay.git /tmp/yay-install
+        (cd /tmp/yay-install && makepkg -si --noconfirm)
+        rm -rf /tmp/yay-install
+    fi
+
+elif command -v apt-get &>/dev/null; then
+    # ── Ubuntu ────────────────────────────────────────────────────────────────
+    sudo apt-get update
+    sudo apt-get install -y tmux fzf git curl nodejs npm build-essential
+
+    # Neovim (binary, apt version is too old)
+    NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+    curl -Lo /tmp/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
+    sudo tar -C /usr/local -xzf /tmp/nvim.tar.gz --strip-components=1
+    rm /tmp/nvim.tar.gz
+
+    # lazygit
+    LG_VERSION=$(curl -s https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep '"tag_name"' | cut -d'"' -f4 | tr -d 'v')
+    curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LG_VERSION}/lazygit_${LG_VERSION}_Linux_x86_64.tar.gz"
+    sudo tar -C /usr/local/bin -xzf /tmp/lazygit.tar.gz lazygit
+    rm /tmp/lazygit.tar.gz
+
+    # yazi
+    YAZI_VERSION=$(curl -s https://api.github.com/repos/sxyazi/yazi/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+    curl -Lo /tmp/yazi.tar.gz "https://github.com/sxyazi/yazi/releases/download/${YAZI_VERSION}/yazi-x86_64-unknown-linux-gnu.tar.gz"
+    tar -xzf /tmp/yazi.tar.gz -C /tmp
+    sudo mv /tmp/yazi-x86_64-unknown-linux-gnu/yazi /usr/local/bin/yazi
+    rm -rf /tmp/yazi.tar.gz /tmp/yazi-x86_64-unknown-linux-gnu
+
+else
+    echo "OS non supporté. Installe les outils manuellement."
+    exit 1
 fi
 
-{{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
-# ── Ubuntu ────────────────────────────────────────────────────────────────────
-sudo apt-get update
-sudo apt-get install -y tmux fzf git curl nodejs npm build-essential
-
-# Neovim (binary, apt version is too old)
-NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-curl -Lo /tmp/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
-sudo tar -C /usr/local -xzf /tmp/nvim.tar.gz --strip-components=1
-rm /tmp/nvim.tar.gz
-
-# lazygit
-LG_VERSION=$(curl -s https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep '"tag_name"' | cut -d'"' -f4 | tr -d 'v')
-curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LG_VERSION}/lazygit_${LG_VERSION}_Linux_x86_64.tar.gz"
-sudo tar -C /usr/local/bin -xzf /tmp/lazygit.tar.gz lazygit
-rm /tmp/lazygit.tar.gz
-
-# yazi
-YAZI_VERSION=$(curl -s https://api.github.com/repos/sxyazi/yazi/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-curl -Lo /tmp/yazi.tar.gz "https://github.com/sxyazi/yazi/releases/download/${YAZI_VERSION}/yazi-x86_64-unknown-linux-gnu.tar.gz"
-tar -xzf /tmp/yazi.tar.gz -C /tmp
-sudo mv /tmp/yazi-x86_64-unknown-linux-gnu/yazi /usr/local/bin/yazi
-rm -rf /tmp/yazi.tar.gz /tmp/yazi-x86_64-unknown-linux-gnu
-
-{{ end -}}
-
-# ── Commun Linux ──────────────────────────────────────────────────────────────
-# npm global sans sudo (prefix ~/.local)
+# ── Commun ────────────────────────────────────────────────────────────────────
 export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
+
+# npm global sans sudo (prefix ~/.local)
 mkdir -p "$HOME/.local/lib/node_modules"
 npm config set prefix "$HOME/.local"
 npm install -g workmux
 
 # lazydocker
 curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-
-{{ end -}}
 
 echo ""
 echo "Installation terminee. Lance 'tmux' pour demarrer."

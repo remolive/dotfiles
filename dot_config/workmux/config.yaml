@@ -3,6 +3,9 @@ main_branch: main
 agent: claude
 merge_strategy: rebase
 
+post_create:
+  - workmux setup
+
 panes:
   - command: <agent>
     focus: true

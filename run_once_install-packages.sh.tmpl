@@ -42,8 +42,10 @@ rm -rf /tmp/yazi.tar.gz /tmp/yazi-x86_64-unknown-linux-gnu
 {{ end -}}
 
 # ── Commun Linux ──────────────────────────────────────────────────────────────
-# workmux (npm)
-sudo npm install -g workmux
+# npm global sans sudo (prefix ~/.local)
+mkdir -p "$HOME/.local/lib/node_modules"
+npm config set prefix "$HOME/.local"
+npm install -g workmux
 
 # lazydocker
 curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash

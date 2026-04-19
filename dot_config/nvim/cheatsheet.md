@@ -26,6 +26,15 @@
     workmux merge             Merge + cleanup
     workmux list              Lister les worktrees actifs
 
+## Rails | rails
+    gf              Sauter au fichier sous le curseur (model, controller...)
+    :Emodel         Ouvrir un model         ex: :Emodel user
+    :Econtroller    Ouvrir un controller    ex: :Econtroller sessions
+    :Eview          Ouvrir une view
+    :Emigration     Ouvrir une migration
+    :Rserver        Lancer rails server
+    :Rgenerate      Rails generate
+
 ## Divers | misc
     <C-s>         Sauvegarder
     <S-h>/<S-l>   Buffer precedent/suivant

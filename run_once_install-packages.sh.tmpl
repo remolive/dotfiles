@@ -35,12 +35,11 @@ elif command -v apt-get &>/dev/null; then
     sudo tar -C /usr/local/bin -xzf /tmp/lazygit.tar.gz lazygit
     rm /tmp/lazygit.tar.gz
 
-    # yazi
+    # yazi (.deb from GitHub releases)
     YAZI_VERSION=$(curl -s https://api.github.com/repos/sxyazi/yazi/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-    curl -Lo /tmp/yazi.tar.gz "https://github.com/sxyazi/yazi/releases/download/${YAZI_VERSION}/yazi-x86_64-unknown-linux-gnu.tar.gz"
-    tar -xzf /tmp/yazi.tar.gz -C /tmp
-    sudo mv /tmp/yazi-x86_64-unknown-linux-gnu/yazi /usr/local/bin/yazi
-    rm -rf /tmp/yazi.tar.gz /tmp/yazi-x86_64-unknown-linux-gnu
+    curl -Lo /tmp/yazi.deb "https://github.com/sxyazi/yazi/releases/download/${YAZI_VERSION}/yazi-x86_64-unknown-linux-gnu.deb"
+    sudo dpkg -i /tmp/yazi.deb
+    rm /tmp/yazi.deb
 
 else
     echo "OS non supporté. Installe les outils manuellement."

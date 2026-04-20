@@ -86,7 +86,7 @@ Keybindings are inspired by VSCode conventions where possible (`Ctrl+s`, `Ctrl+p
 curl -sfL https://chezmoi.io/get | sh
 
 # 2. Apply dotfiles (replace with your repo URL)
-chezmoi init --apply https://github.com/you/dotfiles
+bin/chezmoi init --apply https://github.com/remolive/dotfiles
 ```
 
 chezmoi will prompt for your name and email, then run the install script automatically.

@@ -5,7 +5,7 @@ set -e
 if command -v pacman &>/dev/null; then
     # ── CachyOS / Arch ────────────────────────────────────────────────────────
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl glow fish
+    sudo pacman -S --noconfirm tmux neovim fzf lazygit yazi git curl glow fish fastfetch eza bat starship
 
     # yay (AUR helper)
     if ! command -v yay &>/dev/null; then
@@ -18,7 +18,23 @@ if command -v pacman &>/dev/null; then
 elif command -v apt-get &>/dev/null; then
     # ── Ubuntu ────────────────────────────────────────────────────────────────
     sudo apt-get update
-    sudo apt-get install -y tmux fzf git curl build-essential fish snapd
+    sudo apt-get install -y tmux fzf git curl build-essential fish snapd eza bat
+
+    # On Ubuntu bat installs as batcat; expose it as bat
+    if ! command -v bat &>/dev/null && command -v batcat &>/dev/null; then
+        sudo ln -sf "$(command -v batcat)" /usr/local/bin/bat
+    fi
+
+    # fastfetch (.deb from GitHub releases, apt version unavailable on Ubuntu 24.04)
+    FF_VERSION=$(curl -s https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+    curl -Lo /tmp/fastfetch.deb "https://github.com/fastfetch-cli/fastfetch/releases/download/${FF_VERSION}/fastfetch-linux-amd64.deb"
+    sudo apt-get install -y /tmp/fastfetch.deb
+    rm /tmp/fastfetch.deb
+
+    # starship (official script, not in Ubuntu repos)
+    if ! command -v starship &>/dev/null; then
+        curl -sS https://starship.rs/install.sh | sh -s -- -y
+    fi
 
     # glow (snap, apt version unavailable on Ubuntu)
     sudo snap install glow

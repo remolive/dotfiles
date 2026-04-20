@@ -15,7 +15,10 @@ Personal dev environment config managed with [chezmoi](https://chezmoi.io). Buil
 | [lazydocker](https://github.com/jesseduffield/lazydocker) | Docker TUI, opens as a float in neovim |
 | [yazi](https://github.com/sxyazi/yazi) | File manager TUI |
 | [fzf](https://github.com/junegunn/fzf) | Fuzzy finder — used by tmux-sessionizer |
-| [fish](https://fishshell.com) | Default shell — autocompletion, syntax highlighting |
+| [fish](https://fishshell.com) | Default shell — autocompletion, syntax highlighting, CachyOS-inspired config |
+| [starship](https://starship.rs) | Cross-shell prompt — git status, language versions, command duration |
+| [eza](https://github.com/eza-community/eza) | Modern `ls` replacement with icons (aliased to `ls`, `la`, `ll`, `lt`) |
+| [bat](https://github.com/sharkdp/bat) | `cat` with syntax highlighting, used as `MANPAGER` |
 
 ### Neovim extras (LazyVim)
 
@@ -41,6 +44,7 @@ dot_config/
 │       └── plugins/
 │           ├── tools.lua           # cheatsheet.nvim, vim-tmux-navigator
 │           └── rails.lua           # vim-rails, vim-endwise
+├── fish/config.fish                # CachyOS-inspired prompt and aliases
 ├── tmux/tmux.conf                  # Splits, status bar, Ctrl+f sessionizer
 ├── lazygit/config.yml              # Editor, theme, delta pager
 └── workmux/config.yaml             # Default pane layout (claude+nvim+lazygit+lazydocker)

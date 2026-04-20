@@ -18,7 +18,10 @@ if command -v pacman &>/dev/null; then
 elif command -v apt-get &>/dev/null; then
     # ── Ubuntu ────────────────────────────────────────────────────────────────
     sudo apt-get update
-    sudo apt-get install -y tmux fzf git curl build-essential glow fish
+    sudo apt-get install -y tmux fzf git curl build-essential fish snapd
+
+    # glow (snap, apt version unavailable on Ubuntu)
+    sudo snap install glow
 
     # Neovim (binary, apt version is too old)
     NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | cut -d'"' -f4)

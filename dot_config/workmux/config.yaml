@@ -12,3 +12,4 @@ panes:
     focus: true
   - command: nvim .
     split: horizontal
+nerdfont: true

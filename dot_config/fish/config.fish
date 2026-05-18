@@ -19,6 +19,16 @@ end
 ## PATH
 fish_add_path ~/.local/bin ~/.cargo/bin
 
+## rbenv (Ruby version manager)
+if command -v rbenv >/dev/null
+    status --is-interactive; and source (rbenv init -|psub)
+end
+
+## mise (Node/Python/etc. version manager)
+if command -v mise >/dev/null
+    mise activate fish | source
+end
+
 ## !! and !$ bindings (oh-my-fish/plugin-bang-bang)
 function __history_previous_command
     switch (commandline -t)

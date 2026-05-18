@@ -19,6 +19,7 @@ Personal dev environment config managed with [chezmoi](https://chezmoi.io). Buil
 | [starship](https://starship.rs) | Cross-shell prompt — git status, language versions, command duration |
 | [eza](https://github.com/eza-community/eza) | Modern `ls` replacement with icons (aliased to `ls`, `la`, `ll`, `lt`) |
 | [bat](https://github.com/sharkdp/bat) | `cat` with syntax highlighting, used as `MANPAGER` |
+| [mise](https://mise.jdx.dev) | Polyglot version manager (Node, Python, etc.) — replaces nvm/asdf, native fish support |
 
 ### Neovim extras (LazyVim)
 

@@ -28,6 +28,8 @@
     <prefix>d       Detacher la session (continue en arriere-plan)
     <prefix>:kill-session   Fermer la session courante
     <prefix>:kill-server    Fermer toutes les sessions
+    <prefix>Ctrl-s  Sauvegarder toutes les sessions (tmux-resurrect)
+    <prefix>Ctrl-r  Restaurer les sessions sauvegardées (tmux-resurrect)
 
 ## Workmux | workmux
     workmux add <name>      Créer un worktree + window tmux

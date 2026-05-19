@@ -9,6 +9,7 @@ Personal dev environment config managed with [chezmoi](https://chezmoi.io). Buil
 | Tool | Role |
 |---|---|
 | [tmux](https://github.com/tmux/tmux) | Terminal multiplexer — sessions, windows, panes |
+| [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Save and restore tmux sessions (`prefix+Ctrl-s` / `prefix+Ctrl-r`) |
 | [workmux](https://github.com/raine/workmux) | Orchestrates git worktrees + tmux windows for parallel Claude sessions |
 | [neovim](https://neovim.io) + [LazyVim](https://lazyvim.org) | Editor with LSP, fuzzy search, file explorer |
 | [lazygit](https://github.com/jesseduffield/lazygit) | Git TUI with diff preview, integrated in neovim |

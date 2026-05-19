@@ -79,6 +79,12 @@ fi
 chsh -s "$(which fish)"
 
 
+# TPM (tmux plugin manager) + plugins
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # workmux
 curl -fsSL https://raw.githubusercontent.com/raine/workmux/main/scripts/install.sh | bash
 

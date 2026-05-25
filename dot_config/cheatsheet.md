@@ -32,12 +32,13 @@
     <prefix>Ctrl-r  Restaurer les sessions sauvegardées (tmux-resurrect)
 
 ## Workmux | workmux
+    <prefix>:wm <name>      Smart: ouvre si existe, sinon crée (open-or-add)
     workmux add <name>      Créer un worktree + window tmux
     workmux remove <name>   Supprimer worktree + branch sans merger
     workmux rename <name>   Renommer worktree + window
     workmux merge <name>    Merger la branch + cleanup
     workmux open <name>     Ouvrir une window pour un worktree existant
-    workmux close <name>    Fermer la window (garde le worktree)
+    workmux close <name>    Fermer la window (garde le worktree)  (<prefix>X)
     workmux resurrect       Restaurer les windows après un crash tmux
     workmux dashboard       TUI dashboard de tous les agents actifs
     workmux sidebar         Toggle panneau live de statut dans tmux  (<prefix>S)

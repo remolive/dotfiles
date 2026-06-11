@@ -1,6 +1,6 @@
 # Config globale workmux — surchargeable par .workmux.yaml dans chaque projet
 main_branch: main
-agent: claude -c
+agent: claude -c || claude
 merge_strategy: rebase
 
 post_create:

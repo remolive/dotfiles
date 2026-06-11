@@ -4,6 +4,7 @@ agent: claude -c
 merge_strategy: rebase
 
 post_create:
+  - mise trust
   - workmux setup
   - workmux sidebar
 
